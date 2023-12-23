@@ -1,0 +1,59 @@
+div.meet-the-execs-container{
+    padding-block: 40px;
+    /* padding-inline: 100px; */
+}
+
+div.meet-the-execs-container > p{
+    text-align: center;    
+    font-size: 48px;
+    font-weight: 600;
+    /* background: linear-gradient( 45deg, #ffe103 30%, #ff4d14 70%); */
+    background: linear-gradient( 45deg, #ff4d14 45%, #ffe103 55%);
+    font-family: 'Roboto Condensed', sans-serif;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-block-end: 35px;
+}
+
+@media screen and (max-width: 768px){
+    div.meet-the-execs-container > p{
+        font-size: 32px;
+        margin-block-end: 25px;
+    }
+}
+
+div.execs-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    place-content: center;
+}
+
+div.execs-container > div{
+    /* width : 300px; */
+    text-align : center;
+}
+
+div.execs-container > div > div{
+    width: 100%;
+}
+
+div.execs-container > div > div > img{
+    width:200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    margin: 0 auto;
+    display: block;
+}
+
+div.execs-container > div > p:nth-of-type(1){
+    font-size: 24px;
+    margin-block: 0.5rem;
+    background: linear-gradient( 45deg, #ffe103 30%, #ff4d14 70%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: 500;
+}
