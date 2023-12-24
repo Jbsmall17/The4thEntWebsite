@@ -52,7 +52,7 @@ div.swiper-slide, div.swiper-slide-active{
     align-items: center;
 }
 div.playlistpage-container > div:nth-of-type(2){
-    padding: 25px 50px;
+    padding: 20px 50px;
 }
 
 div.playlistpage-container > div:nth-of-type(2) > p{
