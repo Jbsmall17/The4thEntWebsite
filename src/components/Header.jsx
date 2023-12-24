@@ -25,9 +25,10 @@ export default function Header({activeLink}) {
     const navigate = useNavigate()
 
     function homeClick(){
+        setMobileOpen(false)
         setPage("home")
         navigate("/")
-        setMobileOpen(false)
+
         window.scrollTo({ 
             top: 0,
             left: 0,
@@ -36,6 +37,7 @@ export default function Header({activeLink}) {
     }
     
     function artisteClick(){
+        setMobileOpen(false)
         setPage("artiste")
         navigate("/talent")
         window.scrollTo({ 
@@ -46,6 +48,7 @@ export default function Header({activeLink}) {
     }
 
     function execsClick(){
+        setMobileOpen(false)
         setPage("execs")
         navigate("/execs")
         window.scrollTo({ 
@@ -56,6 +59,7 @@ export default function Header({activeLink}) {
     }
 
     function blogClick(){
+        setMobileOpen(false)
         setPage("bloggg")
         navigate("/blog")
         window.scrollTo({ 
@@ -66,6 +70,7 @@ export default function Header({activeLink}) {
     }
 
     function playlistClick(){
+        setMobileOpen(false)
         navigate("/playlist")
         window.scrollTo({ 
             top: 0,
@@ -75,8 +80,8 @@ export default function Header({activeLink}) {
     }
 
     function handleClick(section){
-        navigate("/")
         setMobileOpen(false)
+        navigate("/")
         setTimeout(()=>{
             const servicesDiv = document.querySelector(section)
             servicesDiv.scrollIntoView({
