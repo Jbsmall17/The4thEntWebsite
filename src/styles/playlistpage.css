@@ -58,7 +58,7 @@ div.playlistpage-container > div:nth-of-type(2){
 div.playlistpage-container > div:nth-of-type(2) > p{
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.0rem;
 }
 
 div.playlistpage-container > div:nth-of-type(2) > ul{
@@ -83,7 +83,7 @@ a.playlist-cta{
     right: 50px;
     bottom: 2%;
     text-decoration: none;
-    padding: 8px 32px;
+    padding: 4px 32px;
     background-color: #3498db;
     color: #fff;
     border-radius: 0.25rem;
@@ -126,7 +126,8 @@ a.playlist-cta:active{
 
 @media screen and (max-width:768px) {
     div.playlistpage{
-        height: auto;
+       min-height: 100vh;
+       height: auto;
     }
     div.playlistpage-container{
         width: 90%;
@@ -144,7 +145,7 @@ a.playlist-cta:active{
         width: 100%;
     }
     div.playlistpage-container > div:nth-of-type(2){
-        padding: 25px 25px;
+        padding: 20px 25px;
         padding-bottom: 75px;
     }
     div.playlistpage-container > div:nth-of-type(2) > ul{
@@ -182,9 +183,9 @@ a.playlist-cta:active{
 }
 
 @media screen and (max-width: 426px) {
-    div.playlistpage{
+    /* div.playlistpage{
         height: auto;
-    }
+    } */
     div.playlistpage-container{
         width: 90%;
         flex-direction: column;

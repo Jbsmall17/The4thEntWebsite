@@ -17,6 +17,11 @@ export default function ModalForm({message,status,onValidated}) {
             // console.log(error)
         }
     }
+    function handlekeyDown(e){
+      if(e.key === 'Enter'){
+        handleSubmit()
+      }
+    }
   return (
     <form  onSubmit={handleSubmit}>
     <input 
@@ -25,6 +30,7 @@ export default function ModalForm({message,status,onValidated}) {
       value={email}
       name="email"
       onChange={(e)=>{setEmail(e.target.value)}}
+      onKeyDown={handlekeyDown}
       required
       />
     <button type="submit">{

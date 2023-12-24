@@ -154,7 +154,7 @@ export default function Header({activeLink}) {
                 <FontAwesomeIcon icon={faHouse} style={{color: "#ff4d14", fontSize: "40px"}} />
                 <span>Home</span>
             </div>
-            <div  onClick={handleClick} className='mobile-navbar-links'>
+            <div  onClick={()=>handleClick("#services")} className='mobile-navbar-links'>
                 <FontAwesomeIcon icon={faScrewdriverWrench}  style={{color: "#000", fontSize: "40px"}} />
                 <span>Services</span>
             </div>
