@@ -62,6 +62,33 @@ function execsPicturesFormat(record){
 }
 
 
+function homeMediaFormat(record){
+    return {
+        "id" : record.id,
+        "S/N" : record.fields['S/N'],
+        "Owner": record.fields['Owner'],
+        "Media" : record.fields['Media']
+    }
+}
+
+function serviceFormat(record){
+    return {
+        "id" : record.id,
+        "S/N" : record.fields['S/N'],
+        "Title" : record.fields['Title'],
+        "Desc" : record.fields['Description']
+    }
+}
+
+function talentFormat(record){
+    return {
+        "id" : record.id,
+        "S/N" : record.fields['S/N'],
+        "Name" : record.fields['Name'],
+        "Image" : record.fields['Image'],
+        "Link" : record.fields['Link']
+    }
+}
 
 export {
     playlistFormat,
@@ -70,5 +97,8 @@ export {
     blogFormat,
     subscribersFormat,
     songListFormat,
-    execsPicturesFormat
+    execsPicturesFormat,
+    homeMediaFormat,
+    serviceFormat,
+    talentFormat
 }

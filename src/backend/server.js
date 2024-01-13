@@ -4,7 +4,10 @@ import {
     blogFormat,
     subscribersFormat,
     songListFormat,
-    execsPicturesFormat
+    execsPicturesFormat,
+    homeMediaFormat,
+    serviceFormat,
+    talentFormat
 } from "./helper"
 import axios from "axios"
 // import dotenv from "dotenv"
@@ -21,6 +24,9 @@ const BLOG_ID = import.meta.env.VITE_BLOG_ID
 const SUBSCRIBERS_ID = import.meta.env.VITE_SUBSCRIBERS_ID 
 const SONG_ID = import.meta.env.VITE_SONG_ID
 const EXECS_PICTURE_ID = import.meta.env.VITE_EXECS_PICTURE_ID
+const HOME_MEDIA_ID = import.meta.env.VITE_HOME_MEDIA_ID
+const SERVICE_ID = import.meta.env.VITE_SERVICE_ID
+const TALENT_ID = import.meta.env.VITE_TALENT_ID
 const TOKEN = import.meta.env.VITE_BASE_TOKEN 
 
 
@@ -123,6 +129,68 @@ async function fetchExecsPictures(){
     }
 }
 
+async function fetchHomeMedia(){
+    try{
+        const response = await axios.get(`${ENDPOINT}/${HOME_MEDIA_ID}`,{
+            headers : {
+                Authorization :`Bearer ${TOKEN}`
+            },
+            params: {
+                sort: [{ field: 'S/N', direction: 'asc' }],
+            }
+        }
+        )
+        const HomeMediaArray = response.data.records
+        .map(homeMediaFormat)
+        .filter((media)=>{
+            return media.Owner !== undefined
+        })
+        return { status: 200, message : "Home media fetched successfully", data: HomeMediaArray}
+    }catch(error){
+        return { status: 500, message : "Internal Server Error", error }
+    }
+}
+
+async function fetchServices(){
+    try{
+        const response = await axios.get(`${ENDPOINT}/${SERVICE_ID}`,{
+            headers: {
+                Authorization : `Bearer ${TOKEN}`
+            },
+            params : {
+                sort : [{ field: 'S/N', direction: 'asc' }]
+            }
+        })
+
+        const ServiceArray = response.data.records
+        .map(serviceFormat)
+
+        return {status: 200, message : "services fetched successfully", data: ServiceArray}
+    }catch(error){
+        return { status: 500, message : "Internal Server Error", error }
+    }
+} 
+
+async function fetchTalents(){
+    try{
+        const response = await axios.get(`${ENDPOINT}/${TALENT_ID}`,{
+            headers: {
+                Authorization : `Bearer ${TOKEN}`
+            },
+            params : {
+                sort : [{ field: 'S/N', direction: 'asc' }]
+            }
+        })
+
+        const TalentArray = response.data.records
+        .map(talentFormat)
+
+        return {status: 200, message : "services fetched successfully", data: TalentArray}
+    }catch(error){
+        return { status: 500, message : "Internal Server Error", error }
+    }
+}
+
 async function postSubscriber(email){
     const endpoint = `${ENDPOINT}/${SUBSCRIBERS_ID}`
 
@@ -164,5 +232,8 @@ export {
     fetchEvent,
     postSubscriber,
     fetchSonglist,
-    fetchExecsPictures
+    fetchExecsPictures,
+    fetchHomeMedia,
+    fetchServices,
+    fetchTalents
 }

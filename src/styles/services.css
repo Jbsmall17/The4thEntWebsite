@@ -2,6 +2,14 @@
     width:24%
 } */
 
+div.fouth-service{
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
 div.fouth-service > p:nth-of-type(1){
     font-size: 24px;
     margin-block-end: 8px;

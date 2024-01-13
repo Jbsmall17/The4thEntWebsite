@@ -26,7 +26,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import 'swiper/css/keyboard';
 import 'swiper/css/effect-fade';
-import {fetchEvent} from "../backend/server.js"
+import {fetchEvent, fetchHomeMedia, fetchServices} from "../backend/server.js"
 import { useNavigate } from 'react-router-dom'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -34,11 +34,16 @@ import Playlist from '../components/Playlist.jsx'
 import entVideo from "../assets/4thent_video.mp4"
 import about22 from "../assets/emaxee_video.mp4"
 import {IoIosArrowDown} from "react-icons/io"
+import { useState } from 'react'
+import {ThreeDots} from "react-loader-spinner"
 
 
 
 
 export default function Home({setVisible}) {
+  const [homeMedia, setHomeMedia] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [services, setServices] = useState([])
   const navigate = useNavigate()
   const homeDiv = useRef()
   const the4thDiv = useRef()
@@ -48,6 +53,18 @@ export default function Home({setVisible}) {
 async function getEvent(){
   const response = await fetchEvent()
   // console.log(response)
+}
+
+async function getHomeMedia(){
+  setIsLoading(true)
+  const response = await fetchHomeMedia()
+  setHomeMedia(response.data)
+  setIsLoading(false)
+}
+
+async function getServices(){
+  const response = await fetchServices()
+  setServices(response.data)
 }
 
 function handleClick(){
@@ -63,6 +80,8 @@ function handleClick(){
 }
   useEffect(()=>{
     getEvent()
+    getHomeMedia()
+    getServices()
   },[])
 
   useEffect(() => {
@@ -74,42 +93,62 @@ function handleClick(){
     <>
       <Header  activeLink={"home"}/>
       <div ref={homeDiv} className='homepage'>
-        <video muted autoPlay loop>
-          <source src={about22} type="video/mp4" />
-        </video>
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          spaceBetween={50}
+          slidesPerView={1}
+          effect={'fade'}
+          autoplay={
+            {
+              delay : 3000,
+              pauseOnMouseEnter : true
+            }
+          }
+        >
+          {
+            isLoading
+            ? <div className='home-media-Loader-container'>
+                <ThreeDots
+                  visible={true}
+                  height="100"
+                  width="100"
+                  color="#ff4d14"
+                  radius="9"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+              </div>
+            :
+            homeMedia.map((media)=>{
+              return (
+                  <SwiperSlide>
+                  <video muted autoPlay loop>
+                    <source src={media.Media[0].url} type="video/mp4" />
+                  </video>
+                </SwiperSlide>                  
+                )
+            })
+          }
+        </Swiper>
         <IoIosArrowDown onClick={handleClick} />
       </div>
       <div className='home-services' id="services" ref={servicesRef}>
         <h3>WHAT WE DO</h3>
         <div className='services-container'>
-          <Services 
-            name={"Music Distribution"}
-            desc={"Immerse your music in our Music Distribution service, ensuring wide-reaching presence and unprecedented accessibility. We provide artists and content creators with a seamless gateway to a global audience hungry for exceptional tunes."}
-          />
-          <Services 
-            name={"Playlisting"}
-            desc={"Step into the world of Playlisting, where we meticulously curate and passionately promote playlists. These playlists are designed not just to captivate but to elevate your music, strategically increasing exposure and engagement for an enduring impact on your audience."}
-          />
-          <Services 
-            name={"Talent Management"}
-            desc={"Embark on a transformative journey with our comprehensive Talent Management expertise. We go beyond representation to guide and sculpt artists' careers with an unwavering commitment to success, fostering growth and unlocking their full potential."}
-          />
-          <Services 
-            name={"Events Management"}
-            desc={"Experience the magic of Events Management as we bring your music and entertainment dreams to life. We meticulously organize and flawlessly execute unforgettable events that resonate with your audience long after the last note fades."}
-          />
-          <Services 
-            name={"Visual Content Management"}
-            desc={"Elevate your visual storytelling with our Visual and Creative Content Management service. In this realm, captivating visuals for artists and brands are expertly crafted to leave an indelible imprint on the hearts and minds of your audience."}
-          />
-          <Services 
-            name={"A&R Services"}
-            desc={"Delve into the future of music with our A&R Services, skillfully identifying and nurturing emerging talent. We shape the industry's next wave of groundbreaking artists, ensuring a continuous evolution of musical excellence."}
-          />
-          <Services 
-            name={"Marketing and Branding"}
-            desc={"Let your brand resonate with authenticity and power through our Marketing and Branding expertise. We tailor effective strategies and construct robust brand identities that not only stand out in the competitive landscape but also ensure your music and entertainment endeavors are not just seen but remembered."}
-          />
+          {
+            services.map((service,index)=>{
+              const {id, Title, Desc} = service
+              return (
+                <Services
+                  key={id} 
+                  name={Title}
+                  desc={Desc}
+                />       
+              )
+            })
+          }
+        
         </div>
       </div>
       {/* <div className='event-container' id='event'>
