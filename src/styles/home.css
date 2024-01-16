@@ -34,7 +34,7 @@ div.homepage > svg{
     transform: translateX(-50%);
     font-size: 48px;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 2;
 }
 
 /* div.homepage{
