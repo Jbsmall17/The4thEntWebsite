@@ -31,6 +31,11 @@ function App() {
   const [email, setEmail] = useState('')
   const [visible,setVisible] = useState(false) 
 
+  function clickHandler(e){
+    // console.log(e.target.className)
+    if(e.target.className === "modal-container")
+      setModal(false)
+  }
 
   async function postEmail(e){
     e.preventDefault()
@@ -93,7 +98,7 @@ function App() {
         style={{color: "#3498db"}}
         />
       { modal &&
-      <div className="modal-container">
+      <div className="modal-container" onClick={clickHandler}>
         <div className="modal">
           <FontAwesomeIcon icon={faEnvelope} size="3x" beatFade style={{color : "#ff4d14"}} />
           <p>Signup to Our Newsletter</p>
