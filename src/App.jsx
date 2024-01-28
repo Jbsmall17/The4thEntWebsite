@@ -187,14 +187,14 @@ function App() {
           }
         />
 
-      <Route 
+      {/* <Route 
         path="/blog"
         element={
           <Suspense fallback={<Loader />}>
             <Blog setVisible={setVisible} />
           </Suspense>
         }
-      />
+      /> */}
        <Route 
         path="/playlist"
         element={

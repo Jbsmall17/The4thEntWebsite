@@ -123,10 +123,10 @@ export default function Header({activeLink}) {
                 <FontAwesomeIcon icon={faBriefcase} size="xl" style={{color: page === "execs"? "#ff4d14" :"#ffffff" }} />
                 <span className='hover-text' >Execs</span>
             </li>
-            <li onClick={blogClick} className={page === "bloggg" ? "active" : null} >
+            {/* <li onClick={blogClick} className={page === "bloggg" ? "active" : null} >
                 <FontAwesomeIcon icon={faNewspaper} size="xl" style={{ color: page === "bloggg"? "#ff4d14" :"#ffffff"}} />
                 <span className='hover-text' >Blog</span>
-            </li>
+            </li> */}
         </ul>
       </nav>
         <button onClick={playlistClick}>
@@ -151,7 +151,7 @@ export default function Header({activeLink}) {
     <header className='mobile-header' ref={headerMobileRef} >
         <div className='line' ref={lineRef2}></div>
         <div className='mobile-header-container' >
-            <HiBars3BottomLeft onClick={()=>{setMobileOpen(true)}} style={{color:'#ff4d14'}} size="3.5em"/>
+            <HiBars3BottomLeft onClick={()=>{setMobileOpen(true)}} style={{color:'#ff4d14', cursor:"pointer"}} size="3.5em"/>
             <img onClick={homeClick} style={{cursor: "pointer"}} src={Logo} className='mobile-logo' alt='The 4th Ent logo' />
         </div>
         <div className={ isMobileOpen ? 'mobile-navbar open' : 'mobile-navbar'}>
@@ -171,17 +171,21 @@ export default function Header({activeLink}) {
                 <FontAwesomeIcon icon={faBriefcase} style={{color: "#ff4d14", fontSize: "40px" }} />
                 <span>Execs</span>
             </div>
-            <div onClick={blogClick} className={'mobile-navbar-links' }>
+            {/* <div onClick={blogClick} className={'mobile-navbar-links' }>
                 <FontAwesomeIcon icon={faNewspaper} style={{color: "#ff4d14", fontSize: "40px"}} />
                 <span>Blog</span>
-            </div>
+            </div> */}
             <div className='mobile-navbar-links'>
                 <div onClick={playlistClick}>
                     Playlist
                 </div>
             </div>
             <div className='mobile-navbar-links'>
-                <FontAwesomeIcon  onClick={()=>{setMobileOpen(false)}} icon={faCircleXmark}  style={{color: "#e00f0f", }}  />
+                <FontAwesomeIcon  
+                onClick={()=>{setMobileOpen(false)}} 
+                icon={faCircleXmark}  
+                style={{cursor:"pointer"}}
+                />
             </div>
         </div>
         {/* <div className='prompt' style={{display: cancel ? "none" : "block"}}>

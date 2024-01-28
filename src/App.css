@@ -5,10 +5,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: 'Times New Roman', Times, serif; */
   font-family: 'Open Sans', sans-serif;
-  /* font-family: Georgia, 'Times New Roman', Times, serif; */
-  /* font-family: 'Lato', sans-serif; */
+}
+
+
+::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff4d14;
+  border-radius: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.9); /* Set the color of the scrollbar track */
+}
+
+
+body {
+  scrollbar-width: thin; /* Set the width of the scrollbar in Firefox */
+  scrollbar-color: #ff4d14 rgba(0, 0, 0, 0.9); /* Set the color of the scrollbar thumb and track in Firefox */
 }
 
 div#root{
