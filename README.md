@@ -1,4 +1,4 @@
-# The 4th entertainment website Company Website
+# The 4th entertainment Company Website
 
 ## Overview
 
