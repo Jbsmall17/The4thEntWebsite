@@ -121,7 +121,7 @@ export default function PlaylistPage({setVisible}) {
               <li><span>PaBrymo</span><span>City boy Duluxe</span></li> */}
             </ul>
           </div>
-          <a href={playlist[0]?.url} className='playlist-cta'>
+          <a href={playlist[0]?.url} target='_blank' className='playlist-cta'>
               listen
             </a>
         </div>
