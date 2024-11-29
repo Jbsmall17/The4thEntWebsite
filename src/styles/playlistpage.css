@@ -24,10 +24,10 @@ div.playlistpage > svg.goback{
 
 div.playlistpage-container{
     width:80%;
-    /* height: 80vh; */
-    height: auto;
+    height: 95vh;
     display: flex;
     flex-direction: row;
+    align-items: stretch;
     background-color: #fff;
     border-radius: 0.625rem;
     color: #0c4cb0;
